@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Darsan Sabu George | NetSphere Solutions</title>
+  <style>
+    body {
+      background: #0d0d0d;
+      color: #33ff33;
+      font-family: 'Courier New', Courier, monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
+    .terminal {
+      background: #111;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 20px #33ff33;
+      width: 90%;
+      max-width: 800px;
+      animation: flicker 1s infinite;
+    }
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.95; }
+    }
+    .title {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    .blink {
+      animation: blink 1s steps(1) infinite;
+    }
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="terminal">
+    <div class="title">~$ whois Darsan</div>
+    <pre id="output"></pre>
+  </div>
+  <script>
+    const profileData = {
+      "name": "Darsan Sabu George",
+      "title": "Cybersecurity Specialist | Developer",
+      "company": "NetSphere Solutions",
+      "email": "darsan@example.com",
+      "phone": "+1-234-567-8901",
+      "website": "https://darsangeorge.dev",
+      "telegram": "@DarsanDev",
+      "projects": [
+        "WiFi Defence",
+        "AI Trading Bot",
+        "Plagiarism Remover",
+        "Fluidics Control System"
+      ],
+      "quote": "Your Vision, Our Innovation"
+    };
+
+    const output = document.getElementById('output');
+    let index = 0;
+    const text = JSON.stringify(profileData, null, 2);
+
+    function type() {
+      if (index < text.length) {
+        output.textContent += text[index++];
+        setTimeout(type, 15);
+      } else {
+        output.innerHTML += "<span class='blink'>_</span>";
+      }
+    }
+
+    type();
+  </script>
+</body>
+</html>
